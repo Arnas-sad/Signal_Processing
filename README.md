@@ -68,3 +68,11 @@ Norm of a complex vector
     c. C = P·Qᴴ
   - Works because Qᴴ·a = [‖a‖; 0; …] (puts a onto axis 1), then P maps axis
   1 to b/‖b‖, scaled by ‖a‖ = ‖b‖.
+
+
+  % C is an isometry in C^(3x2) with C*a = b0
+  b0 = [1; -2j; 0];
+  Q  = [a/norm(a), null(a')];        % 2x2 unitary basis containing a
+  Nb = null(b0');                    % 3x2 orthonormal complement of b0
+  P  = [b0/norm(b0), Nb(:,1)];       % 3x2 with orthonormal columns
+  C  = P * Q';                       % isometry: C'*C = I2 and C*a = b0
